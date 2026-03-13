@@ -1,0 +1,34 @@
+package store.auth;
+
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import store.account.AccountOut;
+
+@FeignClient(
+    name="auth",
+    url="http://auth:8080"
+)
+public interface AuthController {
+
+    @PostMapping("/auth/login")
+    public ResponseEntity<TokenOut> login(
+        @RequestBody LoginIn in
+    );
+
+    @PostMapping("/auth/register")
+    public ResponseEntity<Void> register(
+        @RequestBody RegisterIn in
+    );
+
+    @GetMapping("/auth/whoiam")
+    public ResponseEntity<AccountOut> whoIAm();
+
+    @GetMapping("/auth/health-check")
+    public ResponseEntity<Void> healthCheck();
+
+}
