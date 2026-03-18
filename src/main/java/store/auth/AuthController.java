@@ -15,8 +15,10 @@ import store.account.AccountOut;
 )
 public interface AuthController {
 
+    public static String AUTH_COOKIE_TOKEN = "__store_jwt_token";
+
     @PostMapping("/auth/login")
-    public ResponseEntity<TokenOut> login(
+    public ResponseEntity<Void> login(
         @RequestBody LoginIn in
     );
 
