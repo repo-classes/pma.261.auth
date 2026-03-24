@@ -37,7 +37,7 @@ public interface AuthController {
 
     @PostMapping("/auth/solve")
     public ResponseEntity<Map<String, String>> solveToken(
-        TokenOut map
+        @RequestBody TokenOut map
     );
 
 }
