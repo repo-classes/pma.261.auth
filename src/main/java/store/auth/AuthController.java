@@ -1,6 +1,8 @@
 package store.auth;
 
 
+import java.util.Map;
+
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,5 +34,10 @@ public interface AuthController {
 
     @GetMapping("/auth/health-check")
     public ResponseEntity<Void> healthCheck();
+
+    @PostMapping("/auth/solve")
+    public ResponseEntity<Map<String, String>> solveToken(
+        TokenOut map
+    );
 
 }
